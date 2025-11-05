@@ -1,0 +1,201 @@
+/* Island Vacation Theme */
+:root{
+  --taniti-teal:#0fb5b3;
+  --taniti-deep:#006b6a;
+  --taniti-coral:#ff7d66;
+  --taniti-sand:#f6e7c1;
+  --ink:#1f2933;
+  --ink-2:#364152;
+  --white:#fff;
+  --shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--ink);
+  background: linear-gradient(180deg, #faffff 0%, #f2fffb 100%);
+  line-height:1.6;
+}
+
+/* Header / Nav */
+.header{
+  position:sticky; top:0; z-index:1000;
+  backdrop-filter:saturate(140%) blur(8px);
+  background: rgba(255,255,255,.8);
+  border-bottom: 1px solid rgba(0,0,0,.05);
+}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  height:64px;
+}
+.brand{
+  display:flex; align-items:center; gap:.6rem; text-decoration:none;
+}
+.brand__logo{
+  width:36px;height:36px; border-radius:50%;
+  background: radial-gradient(circle at 35% 25%, var(--taniti-coral), var(--taniti-teal));
+  box-shadow: var(--shadow);
+}
+.brand__name{
+  font-weight:900; letter-spacing:.4px; color:var(--taniti-deep);
+}
+.menu{display:flex; gap:.6rem; list-style:none; padding:0; margin:0}
+.menu a{
+  display:inline-block; padding:.55rem .8rem; border-radius:999px;
+  color:var(--ink-2); text-decoration:none; font-weight:600;
+}
+.menu a:hover{ background:var(--taniti-sand); color:var(--taniti-deep) }
+.menu a[aria-current="page"]{ background:var(--taniti-teal); color:var(--white) }
+
+/* Hero */
+.hero{
+  position:relative; overflow:hidden; border-bottom-left-radius:18px; border-bottom-right-radius:18px;
+  background: linear-gradient(135deg, var(--taniti-teal) 0%, var(--taniti-deep) 100%);
+  color:var(--white);
+}
+.hero__inner{max-width:1100px;margin:auto;padding:64px 20px}
+.hero h1{font-size:clamp(1.8rem, 3.5vw, 3rem); margin:.2rem 0 0}
+.hero p{opacity:.95; max-width:720px}
+.hero__wave{
+  position:absolute; left:0; right:0; bottom:-1px; height:60px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23f6e7c1' d='M0 96l60-10.7C120 75 240 53 360 53.3c120 .3 240 22.3 360 42.7 120 20.7 240 38.7 360 32 120-6.3 240-37.3 300-53.3l60-16v64H0z'/%3E%3C/svg%3E") center/cover no-repeat;
+}
+
+/* Content cards */
+.section{max-width:1100px;margin:40px auto; padding:0 20px}
+.grid{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{
+  background:var(--white); border-radius:16px; box-shadow:var(--shadow);
+  padding:18px; transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover{ transform:translateY(-3px); box-shadow:0 14px 36px rgba(0,0,0,.15) }
+.card h3{margin:.2rem 0 .4rem}
+.badge{display:inline-block; padding:.2rem .5rem; border-radius:999px; background:var(--taniti-sand); color:var(--ink-2); font-weight:700; font-size:.8rem}
+
+/* Tabs (Fish page) */
+.tabs{display:flex; gap:8px; margin:10px 0 20px}
+.tab-btn{
+  border:0; padding:.6rem 1rem; border-radius:999px; font-weight:700; cursor:pointer;
+  background:#e9fbf9; color:var(--taniti-deep);
+}
+.tab-btn[aria-selected="true"]{ background:var(--taniti-teal); color:var(--white) }
+.tab-panel{display:none}
+.tab-panel[data-active="true"]{display:block}
+
+/* Fixed Reservation Button */
+.fab{
+  position:fixed; right:20px; bottom:22px; z-index:1200;
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--taniti-coral); color:var(--white); border-radius:999px;
+  padding:.8rem 1.1rem; text-decoration:none; font-weight:800; box-shadow:var(--shadow);
+}
+.fab:hover{ filter:brightness(.95) }
+
+/* Footer */
+.footer{margin-top:50px; background:var(--taniti-sand); padding:26px 0; color:var(--ink-2)}
+
+/* Forms (Reservations) */
+.form{
+  background:var(--white); padding:20px; border-radius:16px; box-shadow:var(--shadow);
+}
+.form .row{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+label{font-weight:700}
+input, select, textarea{
+  width:100%; padding:.7rem .8rem; border:1px solid #dde3ea; border-radius:12px; font:inherit;
+}
+textarea{min-height:110px}
+button.primary{
+  border:0; padding:.8rem 1rem; border-radius:12px; background:var(--taniti-deep); color:var(--white); font-weight:800; cursor:pointer;
+}
+button.primary:hover{ filter:brightness(1.05) }
+
+/* Accessibility helpers */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{
+  position:fixed; left:20px; top:20px; width:auto; height:auto; padding:.5rem .8rem;
+  background:var(--taniti-deep); color:var(--white); border-radius:8px; z-index:2000;
+}
+
+/* Hide toggle on desktop */
+.nav-toggle{
+    display:none;
+    border:0;
+    background:transparent;
+    font-size:1.6rem;
+    line-height:1;
+    padding:.4rem .6rem;
+    border-radius:10px;
+    color:var(--taniti-deep);
+    cursor:pointer;
+  }
+  
+  /* Responsive typography */
+  h1{font-size:clamp(1.8rem, 4.5vw, 3rem)}
+  h2{font-size:clamp(1.3rem, 3.4vw, 2rem)}
+  h3{font-size:clamp(1.05rem, 2.6vw, 1.2rem)}
+  
+  /* Wider tap targets */
+  .menu a{padding:.7rem 1rem}
+  
+  /* Hero tweaks for small screens */
+  .hero{min-height: clamp(260px, 30vh, 420px)}
+  .hero p{max-width: 60ch}
+  
+  /* Make sure content never hides under the FAB */
+  main{padding-bottom: max(20px, 10vh)}
+  
+  /* Tabs wrap on small screens */
+  .tabs{flex-wrap:wrap}
+  
+  /* Form fields: comfortable spacing */
+  .form .row{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  
+  /* Mobile menu styles */
+  @media (max-width: 768px){
+    .nav{height:60px}
+    .nav-toggle{display:inline-block}
+  
+    /* Turn menu into an overlay panel */
+    #primary-menu{
+      position:fixed;
+      top:60px; left:0; right:0;
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      box-shadow:0 12px 28px rgba(0,0,0,.12);
+      transform:translateY(-16px);
+      opacity:0; pointer-events:none;
+      transition:opacity .18s ease, transform .18s ease;
+      z-index:1200;
+    }
+    #primary-menu.open{
+      transform:translateY(0);
+      opacity:1; pointer-events:auto;
+    }
+  
+    .menu{
+      flex-direction:column;
+      gap:0;
+      padding:8px 10px 10px;
+    }
+    .menu li{border-bottom:1px solid rgba(0,0,0,.05)}
+    .menu li:last-child{border-bottom:0}
+    .menu a{
+      display:block;
+      padding:14px 12px; /* nice tap size */
+      border-radius:12px;
+    }
+  
+    /* Keep the FAB clear of system bars */
+    .fab{right:16px; bottom:16px}
+  
+    /* Reduce side padding for very small screens */
+    .wrap{padding:0 14px}
+  }
+  
+  /* Lock body scroll when mobile menu is open */
+  .body-lock{overflow:hidden}
